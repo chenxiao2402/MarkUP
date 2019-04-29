@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  MarkUP
+
+  Created by Midrash Elucidator on 2019/4/28.
+  Copyright © 2019 Midrash Elucidator. All rights reserved.
+*/
+
+Yes = "はい";
+No = "いいえ";
+Cancel = "キャンセル";
+
+InputFileName = "ファイル名を入力";
+DuplicateFileName = "重複したファイル名";
