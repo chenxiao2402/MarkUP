@@ -12,3 +12,7 @@ Cancel = "キャンセル";
 
 InputFileName = "ファイル名を入力";
 DuplicateFileName = "重複したファイル名";
+
+Group = "グループ";
+InputGroupName = "グールプ名を入力";
+DuplicateGroupName = "重複したグループ名";

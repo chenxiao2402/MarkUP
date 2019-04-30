@@ -12,3 +12,7 @@ Cancel = "Cancel";
 
 InputFileName = "Please input file name";
 DuplicateFileName = "Duplicate file name";
+
+Group = "Group";
+InputGroupName = "Please input group name";
+DuplicateGroupName = "Duplicate group name";

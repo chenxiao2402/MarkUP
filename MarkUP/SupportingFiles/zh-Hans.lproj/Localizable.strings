@@ -12,3 +12,8 @@ Cancel = "取消";
 
 InputFileName = "请输入文件名";
 DuplicateFileName = "文件名重复";
+
+Group = "分组";
+InputGroupName = "请输入分组名";
+DuplicateGroupName = "分组名重复";
+

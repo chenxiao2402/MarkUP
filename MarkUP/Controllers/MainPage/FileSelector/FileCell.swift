@@ -19,7 +19,7 @@ class FileCell: UICollectionViewCell {
     var icon: UIImage!  // 在iconView中要画的图像
     var fileName: String!  // fileNameLabel中的文字
     var fileTime: String!  // fileNameLabel中的文字
-    var dirName: String!   // 文件所在的目录名
+    var fileSelectorVC: FileSelectorVC! // 对应的fileSelector
     
     override func draw(_ rect: CGRect) {
         drawCenter = CGPoint(x: frame.size.width / 2.0, y: frame.size.width / 2.0)
@@ -70,9 +70,16 @@ class FileCell: UICollectionViewCell {
 }
 
 extension FileCell {
-    func enableEditFileName(_ fileSelectorVC: FileSelectorVC) {
-        let tapGesture = UITapGestureRecognizer(target: fileSelectorVC, action: #selector(FileSelectorVC.editFileName))
+    func enableEditFileName() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(FileCell.showRenameFileAlert))
         fileNameLabel.addGestureRecognizer(tapGesture)
         fileNameLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc func showRenameFileAlert() {
+        fileSelectorVC.showInputAlert(owner: fileSelectorVC, okMethod: fileSelectorVC.renameFile)
+        fileSelectorVC.fileName = fileName
+        fileSelectorVC.inputTextField.text = fileName
+        fileSelectorVC.okAction.isEnabled = true
     }
 }

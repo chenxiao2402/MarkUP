@@ -20,8 +20,14 @@
 		5C86820822757E92000685C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C86820A22757E92000685C2 /* Localizable.strings */; };
 		5C86820F227581DE000685C2 /* MdFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86820E227581DE000685C2 /* MdFile.swift */; };
 		5C868213227589A4000685C2 /* LocalizationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C868212227589A4000685C2 /* LocalizationKey.swift */; };
-		5C95EE7C2277365F002F846A /* ProjectKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C95EE7B2277365F002F846A /* ProjectKey.swift */; };
+		5C95EE7C2277365F002F846A /* FileSystemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C95EE7B2277365F002F846A /* FileSystemKey.swift */; };
 		5C95EE7F2277419E002F846A /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C95EE7E2277419E002F846A /* DateTool.swift */; };
+		5CA9E63D227840BC0056B12F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E63C227840BC0056B12F /* AlertManager.swift */; };
+		5CA9E63F227841FE0056B12F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E63E227841FE0056B12F /* FileManager.swift */; };
+		5CA9E642227843910056B12F /* GroupSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E641227843910056B12F /* GroupSelectorVC.swift */; };
+		5CA9E6462278453B0056B12F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E6452278453B0056B12F /* GroupManager.swift */; };
+		5CA9E64A22784E100056B12F /* StoryboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E64922784E100056B12F /* StoryboardKey.swift */; };
+		5CA9E64C227898EA0056B12F /* GroupSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E64B227898EA0056B12F /* GroupSelectorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +64,14 @@
 		5C86820C22757E99000685C2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5C86820E227581DE000685C2 /* MdFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdFile.swift; sourceTree = "<group>"; };
 		5C868212227589A4000685C2 /* LocalizationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKey.swift; sourceTree = "<group>"; };
-		5C95EE7B2277365F002F846A /* ProjectKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectKey.swift; sourceTree = "<group>"; };
+		5C95EE7B2277365F002F846A /* FileSystemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemKey.swift; sourceTree = "<group>"; };
 		5C95EE7E2277419E002F846A /* DateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
+		5CA9E63C227840BC0056B12F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		5CA9E63E227841FE0056B12F /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		5CA9E641227843910056B12F /* GroupSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectorVC.swift; sourceTree = "<group>"; };
+		5CA9E6452278453B0056B12F /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
+		5CA9E64922784E100056B12F /* StoryboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKey.swift; sourceTree = "<group>"; };
+		5CA9E64B227898EA0056B12F /* GroupSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSelectorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +115,7 @@
 			children = (
 				5C95EE7D22774190002F846A /* Tools */,
 				5C86820D227581CC000685C2 /* Files */,
-				5C8681FD2275668B000685C2 /* Enums */,
-				5C8681F6227563C0000685C2 /* Components */,
+				5C8681FD2275668B000685C2 /* Keywords */,
 				5C05283A2272B85C0055FFE1 /* Controllers */,
 				5C0528392272B5370055FFE1 /* Storyboards */,
 				5C0528382272B5120055FFE1 /* SupportingFiles */,
@@ -150,39 +161,25 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		5C8681F6227563C0000685C2 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				5C8681F7227563D1000685C2 /* CollectionCells */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		5C8681F7227563D1000685C2 /* CollectionCells */ = {
-			isa = PBXGroup;
-			children = (
-				5C8681F8227563E2000685C2 /* FileCell.swift */,
-			);
-			path = CollectionCells;
-			sourceTree = "<group>";
-		};
 		5C8681FA227564A0000685C2 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				5C8681FB227564D9000685C2 /* FileSelectorVC.swift */,
+				5CA9E643227843A40056B12F /* GroupSelector */,
+				5CA9E6402278430A0056B12F /* FileSelector */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
 		};
-		5C8681FD2275668B000685C2 /* Enums */ = {
+		5C8681FD2275668B000685C2 /* Keywords */ = {
 			isa = PBXGroup;
 			children = (
 				5C8681FE2275669F000685C2 /* ImageKey.swift */,
 				5C86820022756FA5000685C2 /* ColorKey.swift */,
 				5C868212227589A4000685C2 /* LocalizationKey.swift */,
-				5C95EE7B2277365F002F846A /* ProjectKey.swift */,
+				5C95EE7B2277365F002F846A /* FileSystemKey.swift */,
+				5CA9E64922784E100056B12F /* StoryboardKey.swift */,
 			);
-			path = Enums;
+			path = Keywords;
 			sourceTree = "<group>";
 		};
 		5C86820D227581CC000685C2 /* Files */ = {
@@ -199,6 +196,27 @@
 				5C95EE7E2277419E002F846A /* DateTool.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		5CA9E6402278430A0056B12F /* FileSelector */ = {
+			isa = PBXGroup;
+			children = (
+				5C8681F8227563E2000685C2 /* FileCell.swift */,
+				5CA9E63C227840BC0056B12F /* AlertManager.swift */,
+				5C8681FB227564D9000685C2 /* FileSelectorVC.swift */,
+				5CA9E63E227841FE0056B12F /* FileManager.swift */,
+				5CA9E6452278453B0056B12F /* GroupManager.swift */,
+			);
+			path = FileSelector;
+			sourceTree = "<group>";
+		};
+		5CA9E643227843A40056B12F /* GroupSelector */ = {
+			isa = PBXGroup;
+			children = (
+				5CA9E64B227898EA0056B12F /* GroupSelectorCell.swift */,
+				5CA9E641227843910056B12F /* GroupSelectorVC.swift */,
+			);
+			path = GroupSelector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,14 +324,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C86820F227581DE000685C2 /* MdFile.swift in Sources */,
+				5CA9E642227843910056B12F /* GroupSelectorVC.swift in Sources */,
+				5CA9E63D227840BC0056B12F /* AlertManager.swift in Sources */,
 				5C95EE7F2277419E002F846A /* DateTool.swift in Sources */,
+				5CA9E63F227841FE0056B12F /* FileManager.swift in Sources */,
+				5CA9E6462278453B0056B12F /* GroupManager.swift in Sources */,
 				5C8681FF2275669F000685C2 /* ImageKey.swift in Sources */,
 				5C868213227589A4000685C2 /* LocalizationKey.swift in Sources */,
 				5C8681F9227563E2000685C2 /* FileCell.swift in Sources */,
-				5C95EE7C2277365F002F846A /* ProjectKey.swift in Sources */,
+				5C95EE7C2277365F002F846A /* FileSystemKey.swift in Sources */,
 				5C8681FC227564D9000685C2 /* FileSelectorVC.swift in Sources */,
 				5C05281B2272B4970055FFE1 /* ViewController.swift in Sources */,
+				5CA9E64C227898EA0056B12F /* GroupSelectorCell.swift in Sources */,
 				5C86820122756FA5000685C2 /* ColorKey.swift in Sources */,
+				5CA9E64A22784E100056B12F /* StoryboardKey.swift in Sources */,
 				5C0528192272B4970055FFE1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

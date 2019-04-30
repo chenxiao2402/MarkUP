@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct ProjectKey {
-    static let DefaultDirectory = "Default"
+struct FileSystemKey {
+    static let DefaultGroup = "Default"
 }
