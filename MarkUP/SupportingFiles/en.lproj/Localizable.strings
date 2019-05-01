@@ -16,3 +16,5 @@ DuplicateFileName = "Duplicate file name";
 Group = "Group";
 InputGroupName = "Please input group name";
 DuplicateGroupName = "Duplicate group name";
+DeleteGroupPrompt = "Do you want to delete group: ";
+CantDeleteDefaultGroup = "Can't delete default group";

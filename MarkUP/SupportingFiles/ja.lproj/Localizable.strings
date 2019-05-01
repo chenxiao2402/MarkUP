@@ -16,3 +16,5 @@ DuplicateFileName = "重複したファイル名";
 Group = "グループ";
 InputGroupName = "グールプ名を入力";
 DuplicateGroupName = "重複したグループ名";
+DeleteGroupPrompt = "このグループを削除しますか：";
+CantDeleteDefaultGroup = "既定グループは削除できません";

@@ -36,6 +36,7 @@ extension FileSelectorVC: UIPopoverPresentationControllerDelegate {
             let owner = alertOwner as! GroupSelectorVC
             owner.groupList = MdFile.loadGroups()
             owner.tableView.reloadData()
+            owner.resetSize()
         } else {
             let alert = UIAlertController(
                 title: LocalizationKey.DuplicateGroupName,

@@ -17,6 +17,8 @@ struct LocalizationKey {
     static let Group = translate("Group")
     static let InputGroupName = translate("InputGroupName")
     static let DuplicateGroupName = translate("DuplicateGroupName")
+    static let DeleteGroupPrompt = translate("DeleteGroupPrompt")
+    static let CantDeleteDefaultGroup = translate("CantDeleteDefaultGroup")
     
     static func translate(_ key: String) -> String {
         return NSLocalizedString(key, comment: "")

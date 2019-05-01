@@ -28,6 +28,7 @@
 		5CA9E6462278453B0056B12F /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E6452278453B0056B12F /* GroupManager.swift */; };
 		5CA9E64A22784E100056B12F /* StoryboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E64922784E100056B12F /* StoryboardKey.swift */; };
 		5CA9E64C227898EA0056B12F /* GroupSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E64B227898EA0056B12F /* GroupSelectorCell.swift */; };
+		5CFAE6C7227993DC0004E8A8 /* FileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAE6C6227993DC0004E8A8 /* FileEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		5CA9E6452278453B0056B12F /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		5CA9E64922784E100056B12F /* StoryboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKey.swift; sourceTree = "<group>"; };
 		5CA9E64B227898EA0056B12F /* GroupSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSelectorCell.swift; sourceTree = "<group>"; };
+		5CFAE6C6227993DC0004E8A8 /* FileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				5C8681FB227564D9000685C2 /* FileSelectorVC.swift */,
 				5CA9E63E227841FE0056B12F /* FileManager.swift */,
 				5CA9E6452278453B0056B12F /* GroupManager.swift */,
+				5CFAE6C6227993DC0004E8A8 /* FileEditor.swift */,
 			);
 			path = FileSelector;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			files = (
 				5C86820F227581DE000685C2 /* MdFile.swift in Sources */,
 				5CA9E642227843910056B12F /* GroupSelectorVC.swift in Sources */,
+				5CFAE6C7227993DC0004E8A8 /* FileEditor.swift in Sources */,
 				5CA9E63D227840BC0056B12F /* AlertManager.swift in Sources */,
 				5C95EE7F2277419E002F846A /* DateTool.swift in Sources */,
 				5CA9E63F227841FE0056B12F /* FileManager.swift in Sources */,
@@ -565,7 +569,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkUP.app/MarkUP";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkUP.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app/MarkUP.temp_caseinsensitive_rename.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -586,7 +590,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkUP.app/MarkUP";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkUP.temp_caseinsensitive_rename.temp_caseinsensitive_rename.app/MarkUP.temp_caseinsensitive_rename.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};

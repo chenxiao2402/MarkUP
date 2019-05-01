@@ -10,8 +10,7 @@ import UIKit
 
 class FileCell: UICollectionViewCell {
     
-    static let ratio: CGFloat = 1.4  // 高度 / 宽度的比例
-    var drawCenter: CGPoint!       //绘制圆的圆心
+    static let ratio: CGFloat = 1.2  // 高度 / 宽度的比例
     var iconView = UIImageView()  // 绘制的图像（奖杯/植物），位于圆形的中间
     var touchLabel: UIView!   // 用于管理下面两个label的点击事件的
     var fileNameLabel = UILabel()  // 展示你设置的文字，位于圆形的下方
@@ -20,18 +19,32 @@ class FileCell: UICollectionViewCell {
     var fileName: String!  // fileNameLabel中的文字
     var fileTime: String!  // fileNameLabel中的文字
     var fileSelectorVC: FileSelectorVC! // 对应的fileSelector
+    var isSelectedByUser = false {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     override func draw(_ rect: CGRect) {
-        drawCenter = CGPoint(x: frame.size.width / 2.0, y: frame.size.width / 2.0)
         drawIconView()
         drawFileNameLabel()
         drawFileTimeLabel()
+        if isSelectedByUser {
+            layer.borderWidth = 2.0;
+            layer.borderColor = ColorKey.Orange.cgColor
+            layer.opacity = 0.7
+        } else {
+            layer.borderWidth = 0.0
+            layer.borderColor = UIColor.clear.cgColor
+            layer.opacity = 1.0
+        }
     }
     
     func drawIconView() {
-        let length = frame.size.width * 0.75
+        let sideLength = frame.size.width * 0.75
+        let drawCenter = CGPoint(x: frame.size.width / 2.0, y: sideLength * 0.6)
         iconView.removeFromSuperview()
-        iconView.frame = CGRect(x: 0, y: 0, width: length, height: length)
+        iconView.frame = CGRect(x: 0, y: 0, width: sideLength, height: sideLength)
         iconView.image = icon
         iconView.center = drawCenter
         addSubview(iconView)
@@ -45,7 +58,7 @@ class FileCell: UICollectionViewCell {
         fileNameLabel.font = UIFont(name: "Verdana", size: fontSize)
         fileNameLabel.textAlignment = NSTextAlignment.center
         fileNameLabel.textColor = ColorKey.Blue
-        fileNameLabel.center = CGPoint(x: frame.size.width / 2.0, y: frame.size.width)
+        fileNameLabel.center = CGPoint(x: frame.size.width / 2.0, y: frame.size.width * 0.96)
         addSubview(fileNameLabel)
     }
     
@@ -57,7 +70,7 @@ class FileCell: UICollectionViewCell {
         fileTimeLabel.font = UIFont(name: "Verdana", size: fontSize)
         fileTimeLabel.textAlignment = NSTextAlignment.center
         fileTimeLabel.textColor = ColorKey.DimGray
-        fileTimeLabel.center = CGPoint(x: frame.size.width / 2.0, y: frame.size.width * 1.15)
+        fileTimeLabel.center = CGPoint(x: frame.size.width / 2.0, y: frame.size.width * 1.1)
         addSubview(fileTimeLabel)
     }
     
@@ -65,7 +78,7 @@ class FileCell: UICollectionViewCell {
         self.icon = icon
         self.fileName = filName
         self.fileTime = fileTime
-        setNeedsDisplay()
+        self.isSelectedByUser = false
     }
 }
 

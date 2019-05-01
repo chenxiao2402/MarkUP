@@ -34,6 +34,18 @@ extension MdFile {
         }
     }
     
+    static func removeGroup(_ groupName: String) -> Bool {
+        if groupName == FileSystemKey.DefaultGroup {
+            return false
+        }
+        
+        let url = MdFile.DocumentsDirectory.appendingPathComponent(groupName)
+        if fileManager.fileExists(atPath: url.path) {
+            try! fileManager.removeItem(atPath: url.path)
+        }
+        return true
+    }
+    
     static func loadGroups() -> [String] {
         do {
             var result = try fileManager.contentsOfDirectory(atPath: MdFile.DocumentsDirectory.path)
@@ -94,6 +106,15 @@ extension MdFile {
             return true
         } catch {
             return false
+        }
+    }
+    
+    static func removeFiles(fileList: [String], inGroup groupName: String) {
+        for file in fileList {
+            let url = MdFile.DocumentsDirectory.appendingPathComponent(groupName).appendingPathComponent(file)
+            if fileManager.fileExists(atPath: url.path) {
+                try! fileManager.removeItem(atPath: url.path)
+            }
         }
     }
 }

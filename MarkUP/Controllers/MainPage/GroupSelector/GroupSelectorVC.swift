@@ -17,14 +17,41 @@ class GroupSelectorVC: UITableViewController {
         super.viewDidLoad()
         groupList = MdFile.loadGroups()
         navigationItem.title = LocalizationKey.Group
-        preferredContentSize = CGSize(width: 200, height: min(groupList.count * 48, 280))
+        resetSize()
     }
 
-    @IBAction func showAddGroupAlert(_ sender: Any) {
-        fileSelectorVC.showInputAlert(owner: self, okMethod: fileSelectorVC!.createGroup)
-        
+    func resetSize() {
+        preferredContentSize = CGSize(width: 200, height: min(groupList.count * 48, 280))
     }
     
+    @IBAction func showAddGroupAlert(_ sender: Any) {
+        fileSelectorVC.showInputAlert(owner: self, okMethod: fileSelectorVC!.createGroup)
+    }
+    
+    func removeGroup(_ groupName: String) {
+        let success = MdFile.removeGroup(groupName)
+        if success {
+            if groupName == fileSelectorVC.currentGroup {
+                fileSelectorVC.currentGroup = FileSystemKey.DefaultGroup
+            }
+            fileSelectorVC.fileList = MdFile.loadFiles(inGroup: fileSelectorVC.currentGroup)
+            fileSelectorVC.collectionView.reloadData()
+            
+            groupList = MdFile.loadGroups()
+            tableView.reloadData()
+            resetSize()
+        } else {
+            let alert = UIAlertController(
+                title: LocalizationKey.CantDeleteDefaultGroup,
+                message: "",
+                preferredStyle: .alert
+            )
+            alert.addAction(.init(
+                title: LocalizationKey.Yes,
+                style: .default))
+            present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 
@@ -53,6 +80,27 @@ extension GroupSelectorVC {
         fileSelectorVC.fileList = MdFile.loadFiles(inGroup: fileSelectorVC.currentGroup)
         fileSelectorVC.collectionView.reloadData()
         dismiss(animated: true, completion: nil)
+    }
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alert = UIAlertController(
+                title: LocalizationKey.DeleteGroupPrompt + groupList[indexPath.row],
+                message: "",
+                preferredStyle: .alert
+            )
+            alert.addAction(.init(
+                title: LocalizationKey.Cancel,
+                style: .cancel))
+            alert.addAction(.init(
+                title: LocalizationKey.Yes,
+                style: .destructive,
+                handler: { (_) in
+                    self.removeGroup(self.groupList[indexPath.row])
+            }))
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
 

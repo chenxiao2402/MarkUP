@@ -16,4 +16,5 @@ DuplicateFileName = "文件名重复";
 Group = "分组";
 InputGroupName = "请输入分组名";
 DuplicateGroupName = "分组名重复";
-
+DeleteGroupPrompt = "删除此分组吗：";
+CantDeleteDefaultGroup = "不能删除默认分组";
