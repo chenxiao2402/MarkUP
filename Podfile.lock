@@ -2,23 +2,23 @@ PODS:
   - EFCMark (0.0.2)
   - EFMarkdown (4.1.0):
     - EFCMark (= 0.0.2)
-  - SnapKit (4.2.0)
+  - IQKeyboardManager (6.2.0)
 
 DEPENDENCIES:
   - EFMarkdown
-  - SnapKit
+  - IQKeyboardManager
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - EFCMark
     - EFMarkdown
-    - SnapKit
+    - IQKeyboardManager
 
 SPEC CHECKSUMS:
   EFCMark: 78fb32ed4107c8efc640ad9d20ac31cd44ce2046
   EFMarkdown: d6373ec870be9ab8186c2409c1194e477377c014
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
 
-PODFILE CHECKSUM: d24e596820b7134584b719c8b511bcb08c39c0a5
+PODFILE CHECKSUM: bbab7b4d9f2628a4aec5964692651a03467ce34b
 
 COCOAPODS: 1.5.2

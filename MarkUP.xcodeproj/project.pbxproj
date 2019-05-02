@@ -28,13 +28,14 @@
 		5C95EE7F2277419E002F846A /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C95EE7E2277419E002F846A /* DateTool.swift */; };
 		5CA6B058227B19EE008EE40D /* HtmlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B057227B19EE008EE40D /* HtmlManager.swift */; };
 		5CA6B05A227B1F34008EE40D /* WKWebViewConfigKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B059227B1F34008EE40D /* WKWebViewConfigKey.swift */; };
-		5CA6B05D227B37A2008EE40D /* main-css.css in Resources */ = {isa = PBXBuildFile; fileRef = 5CA6B05C227B37A2008EE40D /* main-css.css */; };
 		5CA9E63D227840BC0056B12F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E63C227840BC0056B12F /* AlertManager.swift */; };
 		5CA9E63F227841FE0056B12F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E63E227841FE0056B12F /* FileManager.swift */; };
 		5CA9E642227843910056B12F /* GroupSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E641227843910056B12F /* GroupSelectorVC.swift */; };
 		5CA9E6462278453B0056B12F /* GroupPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E6452278453B0056B12F /* GroupPopover.swift */; };
 		5CA9E64A22784E100056B12F /* StoryboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E64922784E100056B12F /* StoryboardKey.swift */; };
 		5CA9E64C227898EA0056B12F /* GroupSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E64B227898EA0056B12F /* GroupSelectorCell.swift */; };
+		5CD47FBC227B4F0800B238ED /* TextHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD47FBB227B4F0800B238ED /* TextHandler.swift */; };
+		5CD47FBE227B51F700B238ED /* main-css.css in Resources */ = {isa = PBXBuildFile; fileRef = 5CD47FBD227B51F700B238ED /* main-css.css */; };
 		5CFAE6C7227993DC0004E8A8 /* FileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAE6C6227993DC0004E8A8 /* FileEditor.swift */; };
 		5CFDE024227A8470002F184D /* MdEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFDE023227A8470002F184D /* MdEditor.swift */; };
 		5CFDE028227A8E49002F184D /* MarkdownManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFDE027227A8E49002F184D /* MarkdownManager.swift */; };
@@ -86,13 +87,14 @@
 		5C95EE7E2277419E002F846A /* DateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
 		5CA6B057227B19EE008EE40D /* HtmlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlManager.swift; sourceTree = "<group>"; };
 		5CA6B059227B1F34008EE40D /* WKWebViewConfigKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewConfigKey.swift; sourceTree = "<group>"; };
-		5CA6B05C227B37A2008EE40D /* main-css.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "main-css.css"; path = "../../../../Desktop/main-css.css"; sourceTree = "<group>"; };
 		5CA9E63C227840BC0056B12F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5CA9E63E227841FE0056B12F /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		5CA9E641227843910056B12F /* GroupSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectorVC.swift; sourceTree = "<group>"; };
 		5CA9E6452278453B0056B12F /* GroupPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPopover.swift; sourceTree = "<group>"; };
 		5CA9E64922784E100056B12F /* StoryboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKey.swift; sourceTree = "<group>"; };
 		5CA9E64B227898EA0056B12F /* GroupSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSelectorCell.swift; sourceTree = "<group>"; };
+		5CD47FBB227B4F0800B238ED /* TextHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHandler.swift; sourceTree = "<group>"; };
+		5CD47FBD227B51F700B238ED /* main-css.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "main-css.css"; sourceTree = "<group>"; };
 		5CFAE6C6227993DC0004E8A8 /* FileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEditor.swift; sourceTree = "<group>"; };
 		5CFDE023227A8470002F184D /* MdEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdEditor.swift; sourceTree = "<group>"; };
 		5CFDE027227A8E49002F184D /* MarkdownManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownManager.swift; sourceTree = "<group>"; };
@@ -250,7 +252,7 @@
 		5CA6B05B227B3789008EE40D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				5CA6B05C227B37A2008EE40D /* main-css.css */,
+				5CD47FBD227B51F700B238ED /* main-css.css */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -282,6 +284,7 @@
 			children = (
 				5CFDE030227A972F002F184D /* PictureSelector */,
 				5CFDE023227A8470002F184D /* MdEditor.swift */,
+				5CD47FBB227B4F0800B238ED /* TextHandler.swift */,
 			);
 			path = MdEditor;
 			sourceTree = "<group>";
@@ -403,7 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C0528232272B4980055FFE1 /* LaunchScreen.storyboard in Resources */,
-				5CA6B05D227B37A2008EE40D /* main-css.css in Resources */,
+				5CD47FBE227B51F700B238ED /* main-css.css in Resources */,
 				5C86820822757E92000685C2 /* Localizable.strings in Resources */,
 				5C0528202272B4980055FFE1 /* Assets.xcassets in Resources */,
 				5C05281E2272B4970055FFE1 /* Main.storyboard in Resources */,
@@ -429,13 +432,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MarkUP/Pods-MarkUP-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/EFCMark/EFCMark.framework",
 				"${BUILT_PRODUCTS_DIR}/EFMarkdown/EFMarkdown.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFCMark.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFMarkdown.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -497,6 +500,7 @@
 				5CA6B05A227B1F34008EE40D /* WKWebViewConfigKey.swift in Sources */,
 				5CA9E6462278453B0056B12F /* GroupPopover.swift in Sources */,
 				5C8681FF2275669F000685C2 /* ImageKey.swift in Sources */,
+				5CD47FBC227B4F0800B238ED /* TextHandler.swift in Sources */,
 				5CFDE024227A8470002F184D /* MdEditor.swift in Sources */,
 				5C868213227589A4000685C2 /* LocalizationKey.swift in Sources */,
 				5C8681F9227563E2000685C2 /* FileCell.swift in Sources */,

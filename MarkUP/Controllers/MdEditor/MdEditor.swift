@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 class MdEditor: UIViewController {
 
-    @IBOutlet weak var inputTextView: UITextView!
+    @IBOutlet weak var inputTextView: IQTextView!
     var fileName: String!
     var groupName: String!
     var imageManager: ImageManager!

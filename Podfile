@@ -9,7 +9,7 @@ target 'MarkUP' do
 
   # Pods for MarkUP
   pod "EFMarkdown"
-  pod "SnapKit"
+  pod "IQKeyboardManager"
   
   target 'MarkUPTests' do
     inherit! :search_paths
