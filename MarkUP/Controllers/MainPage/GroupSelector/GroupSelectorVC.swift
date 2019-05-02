@@ -15,29 +15,29 @@ class GroupSelectorVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        groupList = MdFile.loadGroups()
+        groupList = GroupManager.loadGroups()
         navigationItem.title = LocalizationKey.Group
         resetSize()
     }
 
     func resetSize() {
-        preferredContentSize = CGSize(width: 200, height: min(groupList.count * 48, 280))
+        navigationController!.preferredContentSize = CGSize(width: 200, height: min(groupList.count * 48, 280))
     }
     
     @IBAction func showAddGroupAlert(_ sender: Any) {
-        fileSelectorVC.showInputAlert(owner: self, okMethod: fileSelectorVC!.createGroup)
+        fileSelectorVC.showInputAlert(owner: self, okMethod: fileSelectorVC.createGroup(alertOwner:))
     }
     
     func removeGroup(_ groupName: String) {
-        let success = MdFile.removeGroup(groupName)
+        let success = GroupManager.removeGroup(groupName)
         if success {
             if groupName == fileSelectorVC.currentGroup {
                 fileSelectorVC.currentGroup = FileSystemKey.DefaultGroup
             }
-            fileSelectorVC.fileList = MdFile.loadFiles(inGroup: fileSelectorVC.currentGroup)
+            fileSelectorVC.fileList = MarkdownManager.loadFiles(inGroup: fileSelectorVC.currentGroup)
             fileSelectorVC.collectionView.reloadData()
             
-            groupList = MdFile.loadGroups()
+            groupList = GroupManager.loadGroups()
             tableView.reloadData()
             resetSize()
         } else {
@@ -77,7 +77,7 @@ extension GroupSelectorVC {
             let cell = tableCell as! GroupSelectorCell
             cell.setSelected(fileSelectorVC.currentGroup == cell.groupName)
         }
-        fileSelectorVC.fileList = MdFile.loadFiles(inGroup: fileSelectorVC.currentGroup)
+        fileSelectorVC.fileList = MarkdownManager.loadFiles(inGroup: fileSelectorVC.currentGroup)
         fileSelectorVC.collectionView.reloadData()
         dismiss(animated: true, completion: nil)
     }

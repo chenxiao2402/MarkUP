@@ -14,7 +14,7 @@ class FileSelectorVC: UIViewController {
     weak var inputTextField: UITextField!
     var fileList: [(String, String)] = []
     var okAction: UIAlertAction!
-    var fileName: String = ""
+    var fileName: String!
     var leftBarItems: [UIBarButtonItem] = []
     var currentGroup: String! {
         didSet {
@@ -26,7 +26,7 @@ class FileSelectorVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = ColorKey.PaleWhite
         currentGroup = FileSystemKey.DefaultGroup
-        fileList = MdFile.loadFiles(inGroup: currentGroup)
+        fileList = MarkdownManager.loadFiles(inGroup: currentGroup)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
@@ -67,6 +67,13 @@ extension FileSelectorVC: UICollectionViewDelegate, UICollectionViewDataSource  
         if isEditing {
             let cell = self.collectionView.cellForItem(at: indexPath) as! FileCell
             cell.isSelectedByUser = !cell.isSelectedByUser
+        } else {
+            let nav = storyboard?.instantiateViewController(withIdentifier: StoryboardKey.MdEditor) as! UINavigationController
+            let mdEditor = nav.viewControllers.first as! MdEditor
+            nav.modalPresentationStyle = .fullScreen
+            mdEditor.fileName = fileList[indexPath.row].0
+            mdEditor.groupName = currentGroup
+            present(nav, animated: true)
         }
     }
 }

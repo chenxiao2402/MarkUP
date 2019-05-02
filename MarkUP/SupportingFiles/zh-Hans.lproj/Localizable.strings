@@ -18,3 +18,7 @@ InputGroupName = "请输入分组名";
 DuplicateGroupName = "分组名重复";
 DeleteGroupPrompt = "删除此分组吗：";
 CantDeleteDefaultGroup = "不能删除默认分组";
+
+Image = "图片";
+InputImageName = "请输入图片名";
+DuplicateImageName = "图片名重复";

@@ -18,3 +18,7 @@ InputGroupName = "Please input group name";
 DuplicateGroupName = "Duplicate group name";
 DeleteGroupPrompt = "Do you want to delete group: ";
 CantDeleteDefaultGroup = "Can't delete default group";
+
+Image = "Image";
+InputImageName = "Please input image name";
+DuplicateImageName = "Duplicate image name";

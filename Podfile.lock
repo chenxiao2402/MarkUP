@@ -1,0 +1,24 @@
+PODS:
+  - EFCMark (0.0.2)
+  - EFMarkdown (4.1.0):
+    - EFCMark (= 0.0.2)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - EFMarkdown
+  - SnapKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EFCMark
+    - EFMarkdown
+    - SnapKit
+
+SPEC CHECKSUMS:
+  EFCMark: 78fb32ed4107c8efc640ad9d20ac31cd44ce2046
+  EFMarkdown: d6373ec870be9ab8186c2409c1194e477377c014
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: d24e596820b7134584b719c8b511bcb08c39c0a5
+
+COCOAPODS: 1.5.2

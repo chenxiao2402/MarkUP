@@ -18,3 +18,7 @@ InputGroupName = "グールプ名を入力";
 DuplicateGroupName = "重複したグループ名";
 DeleteGroupPrompt = "このグループを削除しますか：";
 CantDeleteDefaultGroup = "既定グループは削除できません";
+
+Image = "画像";
+InputImageName = "画像名を入力";
+DuplicateImageName = "重複した画像名";

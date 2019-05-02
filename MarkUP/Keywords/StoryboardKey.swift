@@ -12,4 +12,11 @@ struct StoryboardKey {
     static let GroupSelector = "GroupSelector"
     static let GroupSelectorCell = "GroupSelectorCell"
     static let ShowGroupSelector = "ShowGroupSelector"
+    
+    static let MdEditor = "MdEditor"
+    static let MdViewer = "MdViewer"
+    static let ShowImageSelector = "ShowImageSelector"
+    static let ImageSelectorCell = "ImageSelectorCell"
+    
+    static let ShowMdViewer = "ShowMdViewer"
 }

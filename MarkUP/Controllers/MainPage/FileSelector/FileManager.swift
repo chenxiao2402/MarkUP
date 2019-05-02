@@ -11,9 +11,9 @@ import UIKit
 extension FileSelectorVC {
     
     func createFile(alertOwner: UIViewController) {
-        let success = MdFile.createFile(withName: inputTextField.text!, inGroup: currentGroup)
+        let success = MarkdownManager.createFile(withName: inputTextField.text!, inGroup: currentGroup)
         if success {
-            fileList = MdFile.loadFiles(inGroup: currentGroup)
+            fileList = MarkdownManager.loadFiles(inGroup: currentGroup)
             collectionView.reloadData()
         } else {
             let alert = UIAlertController(
@@ -29,9 +29,9 @@ extension FileSelectorVC {
     }
     
     func renameFile(alertOwner: UIViewController) {
-        let success = MdFile.renameFile(withName: fileName, inGroup: currentGroup, newFileName: inputTextField.text!)
+        let success = MarkdownManager.renameFile(withName: fileName, inGroup: currentGroup, newFileName: inputTextField.text!)
         if success {
-            fileList = MdFile.loadFiles(inGroup: currentGroup)
+            fileList = MarkdownManager.loadFiles(inGroup: currentGroup)
             collectionView.reloadData()
         } else {
             let alert = UIAlertController(

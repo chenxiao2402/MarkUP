@@ -39,8 +39,8 @@ extension FileSelectorVC {
                 filesToRemove.append(fileCell!.fileName)
             }
         }
-        MdFile.removeFiles(fileList: filesToRemove, inGroup: currentGroup)
-        fileList = MdFile.loadFiles(inGroup: currentGroup)
+        MarkdownManager.removeFiles(fileList: filesToRemove, inGroup: currentGroup)
+        fileList = MarkdownManager.loadFiles(inGroup: currentGroup)
         collectionView.reloadData()
     }
 }

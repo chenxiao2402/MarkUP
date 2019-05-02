@@ -28,13 +28,13 @@ extension FileSelectorVC: UIPopoverPresentationControllerDelegate {
     }
     
     func createGroup(alertOwner: UIViewController) {
-        let success = MdFile.createGroup(inputTextField.text!)
+        let success = GroupManager.createGroup(inputTextField.text!)
         if success {
             currentGroup = inputTextField.text!
-            fileList = MdFile.loadFiles(inGroup: currentGroup)
+            fileList = MarkdownManager.loadFiles(inGroup: currentGroup)
             collectionView.reloadData()
             let owner = alertOwner as! GroupSelectorVC
-            owner.groupList = MdFile.loadGroups()
+            owner.groupList = GroupManager.loadGroups()
             owner.tableView.reloadData()
             owner.resetSize()
         } else {
