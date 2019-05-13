@@ -15,6 +15,7 @@
 		5C0528202272B4980055FFE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C05281F2272B4980055FFE1 /* Assets.xcassets */; };
 		5C0528232272B4980055FFE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C0528212272B4980055FFE1 /* LaunchScreen.storyboard */; };
 		5C05282E2272B4980055FFE1 /* MarkUPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C05282D2272B4980055FFE1 /* MarkUPTests.swift */; };
+		5C393B4A227BE6AB00DA4C41 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C393B49227BE6AB00DA4C41 /* PDFManager.swift */; };
 		5C4A41732279CDAA003D5E70 /* MdViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A41722279CDAA003D5E70 /* MdViewer.swift */; };
 		5C4CDBE7227AACC40014091D /* ImageSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4CDBE6227AACC40014091D /* ImageSelectorCell.swift */; };
 		5C4CDBE9227AC2CA0014091D /* ImageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4CDBE8227AC2CA0014091D /* ImageAlert.swift */; };
@@ -68,6 +69,7 @@
 		5C0528292272B4980055FFE1 /* MarkUPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarkUPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C05282D2272B4980055FFE1 /* MarkUPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkUPTests.swift; sourceTree = "<group>"; };
 		5C05282F2272B4980055FFE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C393B49227BE6AB00DA4C41 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		5C4A41722279CDAA003D5E70 /* MdViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdViewer.swift; sourceTree = "<group>"; };
 		5C4CDBE6227AACC40014091D /* ImageSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorCell.swift; sourceTree = "<group>"; };
 		5C4CDBE8227AC2CA0014091D /* ImageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAlert.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				5CFDE02B227A8E77002F184D /* ImageManager.swift */,
 				5CFDE029227A8E6B002F184D /* GroupManager.swift */,
 				5CA6B057227B19EE008EE40D /* HtmlManager.swift */,
+				5C393B49227BE6AB00DA4C41 /* PDFManager.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				5C95EE7F2277419E002F846A /* DateTool.swift in Sources */,
 				5CA9E63F227841FE0056B12F /* FileManager.swift in Sources */,
 				5C4A41732279CDAA003D5E70 /* MdViewer.swift in Sources */,
+				5C393B4A227BE6AB00DA4C41 /* PDFManager.swift in Sources */,
 				5CFDE028227A8E49002F184D /* MarkdownManager.swift in Sources */,
 				5CA6B05A227B1F34008EE40D /* WKWebViewConfigKey.swift in Sources */,
 				5CA9E6462278453B0056B12F /* GroupPopover.swift in Sources */,

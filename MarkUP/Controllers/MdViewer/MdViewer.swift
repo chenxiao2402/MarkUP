@@ -9,10 +9,11 @@
 import UIKit
 import WebKit
 
-class MdViewer: UIViewController {
+class MdViewer: UIViewController, UIDocumentInteractionControllerDelegate {
     
     var groupName: String!
     var fileName: String!
+    var markView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,37 +21,58 @@ class MdViewer: UIViewController {
         let screenSize = UIScreen.main.bounds
         let config = WKWebViewConfiguration.init()
         config.preferences.setValue(true, forKey: WKWebViewConfigKey.AllowFileAccessFromFileURLs)
-        let markView = WKWebView.init(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height), configuration: config)
-        markView.sizeToFit()
+        markView = WKWebView.init(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height), configuration: config)
         view.addSubview(markView)
 
-        let baseUrl = FileSystemKey.SourceDirectory.appendingPathComponent(groupName).appendingPathComponent(fileName)
+        let baseUrl = FileSystemKey.url(groupName, fileName)
         let htmlUrl = baseUrl.appendingPathComponent(fileName + HtmlManager.fileExtension)
         markView.loadFileURL(htmlUrl, allowingReadAccessTo: baseUrl)
-        
-//        markView.loadHTMLString(htmlContent, baseURL: url)
-        
-//        markView.load(markdown: markdownContent, options: [.default]) {
-//            [weak self] (_, _) in
-//            if let _ = self {
-//                // 可选：你可以通过在此处传入一个百分比来改变字体大小
-//                markView.setFontSize(percent: 128)
-//                printLog("load finish!")
-//
-//            }
-//        }
-    }
-    
-    func testMarkdownFileContent() -> String {
-        if let templateURL = Bundle.main.url(forResource: "sample1", withExtension: "md") {
-            do {
-                var result = try String(contentsOf: templateURL, encoding: String.Encoding.utf8)
-                return result
-            } catch {
-                return ""
-            }
-        }
-        return ""
     }
 
+    @IBAction func exportPDF(_ sender: Any) {
+        let pdfData = markView.convertToPDF()
+        let pdfURL = PDFManager.saveAsPDF(withName: fileName, inGroup: groupName, pdfData: pdfData)
+        
+        print(pdfURL.absoluteString)
+        let documentController = UIDocumentInteractionController.init(url: pdfURL)
+        documentController.delegate = self;
+        documentController.presentPreview(animated: true)
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+}
+
+extension WKWebView {
+    func convertToPDF() -> NSMutableData {
+        let page = CGRect(x: 0, y: 0, width: 595, height: 842)
+        let render = UIPrintPageRenderer()
+        render.addPrintFormatter(viewPrintFormatter(), startingAtPageAt: 0)
+        render.setValue(page, forKey: "paperRect")
+        render.setValue(page, forKey: "printableRect")
+        
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData( pdfData, page, nil );
+        for i in 0..<render.numberOfPages{
+            UIGraphicsBeginPDFPage()
+            render.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+        }
+        UIGraphicsEndPDFContext()
+        return pdfData;
+    }
+}
+
+extension MdViewer {
+    func documentInteractionControllerViewForPreview(controller: UIDocumentInteractionController) -> UIView? {
+        return self.view
+    }
+    
+    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+        return self.view.frame
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
 }

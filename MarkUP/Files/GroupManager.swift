@@ -13,7 +13,7 @@ class GroupManager {
     static let fileManager = FileManager.default
     
     static func getGroup(byName groupName: String) -> URL {
-        let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName)
+        let url = FileSystemKey.DocumentDirectory.appendingPathComponent(groupName)
         if !fileManager.fileExists(atPath: url.path) {
             try! fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         }
@@ -21,7 +21,7 @@ class GroupManager {
     }
     
     static func createGroup(_ groupName: String) -> Bool {
-        let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName)
+        let url = FileSystemKey.DocumentDirectory.appendingPathComponent(groupName)
         if !fileManager.fileExists(atPath: url.path) {
             try! fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
             return true
@@ -35,7 +35,7 @@ class GroupManager {
             return false
         }
         
-        let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName)
+        let url = FileSystemKey.DocumentDirectory.appendingPathComponent(groupName)
         if fileManager.fileExists(atPath: url.path) {
             try! fileManager.removeItem(atPath: url.path)
         }
@@ -44,15 +44,15 @@ class GroupManager {
     
     static func loadGroups() -> [String] {
         do {
-            var result = try fileManager.contentsOfDirectory(atPath: FileSystemKey.MarkdownDirectory.path)
+            var result = try fileManager.contentsOfDirectory(atPath: FileSystemKey.DocumentDirectory.path)
             result = result.filter { group -> Bool in
                 return group != FileSystemKey.DefaultGroup
             }
             try result.sort { (g1, g2) -> Bool in
-                let path1 = FileSystemKey.MarkdownDirectory.appendingPathComponent(g1).path
+                let path1 = FileSystemKey.DocumentDirectory.appendingPathComponent(g1).path
                 let attributes1 = try fileManager.attributesOfItem(atPath: path1)
                 let creationDate1 = attributes1[FileAttributeKey.creationDate] as! Date
-                let path2 = FileSystemKey.MarkdownDirectory.appendingPathComponent(g2).path
+                let path2 = FileSystemKey.DocumentDirectory.appendingPathComponent(g2).path
                 let attributes2 = try fileManager.attributesOfItem(atPath: path2)
                 let creationDate2 = attributes2[FileAttributeKey.creationDate] as! Date
                 return creationDate1 > creationDate2

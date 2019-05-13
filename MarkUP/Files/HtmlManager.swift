@@ -15,45 +15,35 @@ class HtmlManager {
     static let fileExtension = ".html"
     
     static func saveAsHtml(withName fileName: String, inGroup groupName: String) {
-        var url = FileSystemKey.SourceDirectory.appendingPathComponent(groupName).appendingPathComponent(fileName)
-        if !fileManager.fileExists(atPath: url.path) {
-            try! fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-        }
-        
-        url = url.appendingPathComponent(fileName + fileExtension)
+        let url = FileSystemKey.url(groupName, fileName) .appendingPathComponent(fileName + fileExtension)
         let imageManager = ImageManager(groupName: groupName, fileName: fileName)
         let content = loadHtml(resolveMarkdown(MarkdownManager.readFile(withName: fileName, inGroup: groupName), imageManager: imageManager))
-        try! content.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+        try! content.write(to: url, atomically: true, encoding: .utf8)
     }
     
     static func resolveMarkdown(_ content: String, imageManager: ImageManager) -> String {
-        var result = ""
-
-        for line in content.split(separator: "\n") {
-            var oneline = String(line)
-            let pattern = "\\!\\[\\]\\(.*\\)"
-            let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-            let res = regex.matches(in: oneline, options: [], range: NSMakeRange(0, line.count))
-            
-            var imageNameList: [String] = []
-            for checkingRes in res {
-                var start = oneline.index(oneline.startIndex, offsetBy: checkingRes.range.location)
-                let imageText = String(oneline.suffix(from: start).prefix(checkingRes.range.length))
-                start = imageText.index(imageText.startIndex, offsetBy: 4)
-                let imageName = imageText[..<imageText.index(before: imageText.endIndex)].suffix(from: start)
-                imageNameList.append(String(imageName))
-            }
-            
-            oneline = try! EFMarkdown().markdownToHTML(oneline)
-            
-            for imageName in imageNameList {
-                let originalHtml = "<img src=\"\(imageName)\" alt=\"\" />"
-                let imageUrl = "<img src=\"\(imageManager.url(String(imageName)).absoluteString)\" alt=\"\" />"
-                oneline = oneline.replacingOccurrences(of: originalHtml, with: imageUrl)
-            }
-            result += "\(oneline)"
+        var htmlContent = try! EFMarkdown().markdownToHTML(content, options: .default)
+        
+        let pattern = "<img src=\".*?\" alt=\"\" />"
+        let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+        let res = regex.matches(in: htmlContent, options: [], range: NSMakeRange(0, htmlContent.count))
+        
+        var imageNameList: [String] = []
+        for checkingRes in res {
+            var start = htmlContent.index(htmlContent.startIndex, offsetBy: checkingRes.range.location)
+            let imageText = String(htmlContent.suffix(from: start).prefix(checkingRes.range.length))
+            start = imageText.index(imageText.startIndex, offsetBy: 10)
+            let imageName = imageText[..<imageText.index(imageText.endIndex, offsetBy: -11)].suffix(from: start)
+            imageNameList.append(String(imageName))
         }
-        return result
+
+        for imageName in imageNameList {
+            let originalHtml = "<img src=\"\(imageName)\" alt=\"\" />"
+            let imageUrl = "<img src=\"\(imageManager.url(String(imageName)).absoluteString)\" alt=\"\" />"
+            htmlContent = htmlContent.replacingOccurrences(of: originalHtml, with: imageUrl)
+        }
+        
+        return htmlContent
     }
     
     static func loadHtml(_ content: String) -> String {

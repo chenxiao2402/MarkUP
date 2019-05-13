@@ -19,7 +19,7 @@ class ImageManager {
     init(groupName: String, fileName: String) {
         self.groupName = groupName
         self.fileName = fileName
-        self.baseUrl = FileSystemKey.SourceDirectory.appendingPathComponent(groupName).appendingPathComponent(fileName).appendingPathComponent(FileSystemKey.ImageDirectory)
+        self.baseUrl = FileSystemKey.url(groupName, fileName).appendingPathComponent(FileSystemKey.ImageDirectory)
     }
     
     func loadImages() -> [String] {

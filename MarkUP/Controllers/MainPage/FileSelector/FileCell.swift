@@ -53,9 +53,9 @@ class FileCell: UICollectionViewCell {
     func drawFileNameLabel() {
         fileNameLabel.removeFromSuperview()
         let fontSize: CGFloat = UIDevice().model == "iPad" ? 18.0 : 14.0
-        fileNameLabel.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: fontSize)
+        fileNameLabel.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: fontSize * 1.1)
         fileNameLabel.text = fileName
-        fileNameLabel.font = UIFont(name: "Verdana", size: fontSize)
+        fileNameLabel.font = UIFont.init(name: "Verdana", size: fontSize)
         fileNameLabel.textAlignment = NSTextAlignment.center
         fileNameLabel.textColor = ColorKey.Blue
         fileNameLabel.center = CGPoint(x: frame.size.width / 2.0, y: frame.size.width * 0.96)
@@ -65,7 +65,7 @@ class FileCell: UICollectionViewCell {
     func drawFileTimeLabel() {
         fileTimeLabel.removeFromSuperview()
         let fontSize: CGFloat = UIDevice().model == "iPad" ? 12.0 : 10.0
-        fileTimeLabel.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: fontSize)
+        fileTimeLabel.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: fontSize * 1.1)
         fileTimeLabel.text = fileTime
         fileTimeLabel.font = UIFont(name: "Verdana", size: fontSize)
         fileTimeLabel.textAlignment = NSTextAlignment.center

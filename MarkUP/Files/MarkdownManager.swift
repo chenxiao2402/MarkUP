@@ -11,13 +11,16 @@ import Foundation
 class MarkdownManager {
     
     static let fileManager = FileManager.default
+    static let mdExtension = ".md"
+    static let pdfExtension = ".pdf"
+    static let htmlExtension = ".html"
     
     static func loadFiles(inGroup groupName: String) -> [(String, String)] {
         do {
             let dirURL = GroupManager.getGroup(byName: groupName)
             let fileList = try fileManager.contentsOfDirectory(atPath: dirURL.path).sorted()
             var result = try fileList.map { fileName -> (String, String) in
-                let filePath = dirURL.path + "/\(fileName)"
+                let filePath = dirURL.appendingPathComponent(fileName).path
                 let attributes = try fileManager.attributesOfItem(atPath: filePath)
                 let creationDate = attributes[FileAttributeKey.creationDate] as! Date
                 return (fileName, DateTool.dateToString(creationDate))
@@ -31,9 +34,10 @@ class MarkdownManager {
     }
     
     static func createFile(withName fileName: String, inGroup groupName: String) -> Bool {
-        let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName).appendingPathComponent(fileName)
-        if !fileManager.fileExists(atPath: url.path) {
-            fileManager.createFile(atPath: url.path, contents: nil, attributes: nil)
+        let mdFileUrl = mdUrl(groupName, fileName)
+        if !fileManager.fileExists(atPath: mdFileUrl.path) {
+            try! fileManager.createDirectory(at: FileSystemKey.url(groupName, fileName), withIntermediateDirectories: true, attributes: nil)
+            fileManager.createFile(atPath: mdFileUrl.path, contents: nil, attributes: nil)
             return true
         } else {
             return false
@@ -41,12 +45,15 @@ class MarkdownManager {
     }
     
     static func renameFile(withName fileName: String, inGroup groupName: String, newFileName: String) -> Bool {
-        let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName)
-        let originPath = url.appendingPathComponent(fileName)
-        let destinationPath = url.appendingPathComponent(newFileName)
+        let originPath = FileSystemKey.url(groupName, fileName)
+        let destinationPath = FileSystemKey.url(groupName, newFileName)
         do {
-            // 如果移动到一个已经存在的、但是不是originPath的路径，会报错
             try fileManager.moveItem(at: originPath, to: destinationPath)
+            for fileExtension in [mdExtension, pdfExtension, htmlExtension] {
+                let originFile = destinationPath.appendingPathComponent(fileName + fileExtension)
+                let destinationFile = destinationPath.appendingPathComponent(newFileName + fileExtension)
+                try fileManager.moveItem(at: originFile, to: destinationFile)
+            }
             return true
         } catch {
             return false
@@ -54,30 +61,32 @@ class MarkdownManager {
     }
     
     static func removeFiles(fileList: [String], inGroup groupName: String) {
-        for file in fileList {
-            let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName).appendingPathComponent(file)
-            if fileManager.fileExists(atPath: url.path) {
-                try! fileManager.removeItem(atPath: url.path)
+        for fileName in fileList {
+            let fileUrl = FileSystemKey.url(groupName, fileName)
+            if fileManager.fileExists(atPath: fileUrl.path) {
+                try! fileManager.removeItem(atPath: fileUrl.path)
             }
         }
     }
     
     static func saveFile(withName fileName: String, inGroup groupName: String, content: String) {
-        let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName).appendingPathComponent(fileName)
+        let url = mdUrl(groupName, fileName)
         if !fileManager.fileExists(atPath: url.path) {
             fileManager.createFile(atPath: url.path, contents: nil, attributes: nil)
         }
-        let data = try! NSKeyedArchiver.archivedData(withRootObject: content, requiringSecureCoding: false)
-        try! data.write(to: url)
+        try! content.write(to: url, atomically: true, encoding: String.Encoding.utf8)
     }
     
     static func readFile(withName fileName: String, inGroup groupName: String) -> String {
         do {
-            let url = FileSystemKey.MarkdownDirectory.appendingPathComponent(groupName).appendingPathComponent(fileName)
-            let fileData = try Data(contentsOf: url)
-            return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(fileData) as? String ?? ""
+            let url = mdUrl(groupName, fileName)
+            return try String.init(contentsOfFile: url.path, encoding: .utf8)
         } catch {
             return ""
         }
+    }
+    
+    static func mdUrl(_ groupName: String, _ fileName: String) -> URL {
+        return FileSystemKey.url(groupName, fileName).appendingPathComponent(fileName + mdExtension)
     }
 }

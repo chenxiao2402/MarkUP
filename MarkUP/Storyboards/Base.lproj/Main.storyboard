@@ -101,7 +101,11 @@
                         <viewLayoutGuide key="safeArea" id="UKp-Jl-q4q"/>
                     </view>
                     <navigationItem key="navigationItem" id="eHF-mE-cng">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="6OS-4L-Uwh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="6OS-4L-Uwh">
+                            <connections>
+                                <action selector="exportPDF:" destination="ZVT-eJ-Goi" id="Xj2-Vd-ThO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXe-7z-CB5" userLabel="First Responder" sceneMemberID="firstResponder"/>

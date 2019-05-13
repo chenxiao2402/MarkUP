@@ -11,7 +11,9 @@ import Foundation
 struct FileSystemKey {
     static let DefaultGroup = "Default"
     static let ImageDirectory = "Images"
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let MarkdownDirectory = FileSystemKey.DocumentsDirectory.appendingPathComponent("Markdown")
-    static let SourceDirectory = FileSystemKey.DocumentsDirectory.appendingPathComponent("Source")
+    static let DocumentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    
+    static func url(_ groupName: String, _ fileName: String) -> URL {
+        return FileSystemKey.DocumentDirectory.appendingPathComponent(groupName).appendingPathComponent(fileName)
+    }
 }
